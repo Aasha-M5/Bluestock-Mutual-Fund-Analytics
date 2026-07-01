@@ -8,19 +8,12 @@ scripts = [
     "scripts/load_to_sqlite.py"
 ]
 
-print("=" * 50)
-print("Starting Bluestock Mutual Fund ETL Pipeline")
-print("=" * 50)
-
 for script in scripts:
-    print(f"\nRunning {script} ...")
-
-    result = subprocess.run(
-        [sys.executable, script]
-    )
+    print(f"\nRunning {script}...")
+    result = subprocess.run([sys.executable, script])
 
     if result.returncode != 0:
-        print(f"Error while executing {script}")
-        exit()
+        print(f"Error while running {script}")
+        break
 
 print("\nETL Pipeline Completed Successfully!")
